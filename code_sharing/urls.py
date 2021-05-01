@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from python_code_share.views import codeshare
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('codeshare/', codeshare)
 ]
