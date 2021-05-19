@@ -52,11 +52,12 @@ function getExampleRef() {
 
 
 function download(file, text) {
+    console.log(text);
               
     //creating an invisible element
     var element = document.createElement('a');
     element.setAttribute('href', 
-    'data:text/plain;charset=utf-8, '
+    'data:text/plain;charset=utf-8,'
     + encodeURIComponent(text));
     element.setAttribute('download', file);
   
