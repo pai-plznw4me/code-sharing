@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+{% load static %}
 <!-- See http://www.firepad.io/docs/ for detailed embedding docs. -->
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -10,20 +12,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/mode/javascript/javascript.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/mode/python/python.min.js"></script>
-    <script src="lib/matchbrackets.js"></script>
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css"
-    />
-
-    <!-- Firepad -->
-    <link
-      rel="stylesheet"
-      href="https://firepad.io/releases/v1.5.9/firepad.css"
-    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/edit/matchbrackets.min.js"></script>
     <script src="https://firepad.io/releases/v1.5.9/firepad.min.js"></script>
 
+    <!-- css files-->
+    <link rel="stylesheet" type="text/css" href="{% static 'run_firepad.css' %}">
+    <!-- <link rel="stylesheet", href="./run_firepad.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css"/>
+    <link rel="stylesheet" href="https://firepad.io/releases/v1.5.9/firepad.css"/>
+
+<!-- 
     <style>
       html {
         height: 100%;
@@ -39,11 +37,14 @@
         width: 100%;
         height: 100%;
       }
-    </style>
+    </style> -->
   </head>
 
   <body onload="init()">
     <div id="firepad-container"></div>
+    <div id='footer'>
+      <button >Code snippet save </button>
+      <div>
 
     <script>
       function init() {
@@ -71,10 +72,11 @@
         );
 
         //// Create Firepad.
-        var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+        firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
           defaultText:
             '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}',
         });
+        
       }
 
       // Helper to get hash from end of URL or generate a random one.
@@ -92,6 +94,9 @@
         }
         return ref;
       }
+    console.log(firepad.getText())
     </script>
+
   </body>
+  
 </html>
