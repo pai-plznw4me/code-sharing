@@ -1,5 +1,6 @@
 function save_snippet(){
     console.log('save_snippet working!')
+    console.log(firepad.getText())
 }
 
 function init() {
@@ -48,3 +49,24 @@ function getExampleRef() {
     }
     return ref;
   }
+
+
+function download(file, text) {
+              
+    //creating an invisible element
+    var element = document.createElement('a');
+    element.setAttribute('href', 
+    'data:text/plain;charset=utf-8, '
+    + encodeURIComponent(text));
+    element.setAttribute('download', file);
+  
+    // Above code is equivalent to
+    // <a href="path of file" download="file name">
+  
+    document.body.appendChild(element);
+  
+    //onClick property
+    element.click();
+  
+    document.body.removeChild(element);
+}
